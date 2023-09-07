@@ -1,6 +1,8 @@
 # EDAF60 2023 Computer Group 46
 
+Hey Group 46!
 
+Here are some useful resources on design patterns. To start with, Fireship's videos are _always_ [fire](https://www.youtube.com/watch?v=tv-_1er1mWI). [Refactoring.guru] (https://refactoring.guru/design-patterns/) is another hidden gem worth checking out. /Joel
 
 ## Getting started
 
