@@ -31,6 +31,7 @@ The types that can be passed into the `Add` constructor are either addresses, gi
 Class diagram for `Add`:
 ![Class diagram for `Add`](assets/o4.png "Class diagram for `Add`")
 
+
 #### O5: What does the Add class want to do with these operands? Update the class diagram from O4
 
 Updated class diagram for `Add`:
@@ -38,9 +39,9 @@ Updated class diagram for `Add`:
 
 An `Add` object is constructed by passing into it two `Operand` objects (either an `Address` or `Word`), which will constitute the left and right operands  of the instruction ('arguments'), and one `Address`, which will store the result.
 
-When an `Add` object is executed, it accesses its operands (`left` and `right`) using the `word(Memory)` method defined in the `Operand` interface. For regular words, the expected implementation is that it will just return itself, but on `Address` objects it looks up the `Word` stored in that memory address. The reason this method needs to take a `Memory` object as an argument is because a memory lookup is needed in the general case (when trying to convert an `Address` into a `Word`). The `word` implementation on `Address` looks up which word is stored at that address by passing itself into the `wordAt(Address) : Word` method of the `Memory` class.
+When an `Add` object is executed, it accesses its operands (`left` and `right`) using the `getWord(Memory)` method defined in the `Operand` interface. For regular words, the expected implementation is that it will just return itself, but on `Address` objects it looks up the `Word` stored in that memory address. The reason this method needs to take a `Memory` object as an argument is because a memory lookup is needed in the general case (when trying to convert an `Address` into a `Word`). The `word` implementation on `Address` looks up which word is stored at that address by passing itself into the `wordAt(Address) : Word` method of the `Memory` class.
 
-At this point we have two `Word` objects that need to be added together. Since we have many different possible implementations of `Word`, and because the implementation is opaque, the `Add` class can't possibly know how to add any two words together. This is instead delegated to a method in `Word`, which means that it is the responsibility of each implementing class to know how to add two words together. The `add` method additionally takes a third parameter, an `Address` which points to the memory location where it should store its result. This is needed because the `Word`s in memory need to be overwritten, and it is only the word itself that knows how to overwrite another `Word` of the same type.
+At this point we have two `Word` objects that need to be added together. Since we have many different possible implementations of `Word`, and because the implementation is opaque, the `Add` class can't possibly know how to add any two words together. This is instead delegated to a method in `Word`, which means that it is the responsibility of each implementing class to know how to add two words together. The `add` method takes two parameters: a word to add itself to, and a word where the result will be stored. This 'result' word can be taken directly from RAM.
 
 #### O6: What information do we need to get the value of an operand?
 
@@ -66,16 +67,15 @@ The typical use case for generics is when you have _one_ implementation that cou
 
 #### W5: ... we want addition and multiplication in this project implemented in such a way that the sum or product of two words are always saved in an existing word – how do we declare such a method?
 
-This could be implemented so that the `Word` at the location of the memory address where `Add` wants to save its result is overwritten with the result of the addition, instead of creating a new `Word` with the result.
+The `add` method (and consequently the `mul` method) will be implemented so that it stores it result in a `Word` given as a parameter. This `Word` is generally taken from memory.
 
 #### W6: What methods except for add do we need in our Word classes?
 
 Each `Word` additionally needs the following methods:
 
-- A method for copying the contents of a `Word` to a new memory location (this is needed in order for the contents of the `Word` to overwrite an existing `Word`).
 - A `mul` method that can be called from the `Mul` class.
 - A method to print a word, for use with the `Print` instruction.
-- An equals method to compare two words.
+- An `equals` method to compare two words.
 
 #### W7: What should happen if someone creates a LongWordFactory (lwf), and a ByteWordFactory (bwf), and makes the following (erroneous) call?
 
@@ -118,7 +118,9 @@ The project is divided into four packages:
 - `words`, where all the `Word` implementations reside, and
 - `computer`, where the rest of the computer (memory etc.) is located.
 
-### Questions
+### Additional resources
 
-- Can we always assume that the result of an operation will be put in the same memory location as one of its operands?
-- How are addresses 'linked together' with the memory?
+#### UML for additional classes
+
+Class diagram:
+![Class diagram A1](assets/computerPackage.png)
