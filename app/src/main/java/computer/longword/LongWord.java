@@ -1,7 +1,6 @@
 package computer.longword;
 
 import computer.Word;
-import exceptions.*;
 import exceptions.WordMismatchException;
 
 public class LongWord extends Word {
@@ -26,7 +25,7 @@ public class LongWord extends Word {
     }
 
     @Override
-    public boolean equals(Word other) {
+    public boolean equals(Object other) {
         if (!(other instanceof LongWord)) {
             throw new WordMismatchException();
         } else {

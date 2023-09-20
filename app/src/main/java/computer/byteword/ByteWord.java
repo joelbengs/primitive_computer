@@ -36,7 +36,7 @@ public class ByteWord extends Word {
     }
 
     @Override
-    public boolean equals(Word other) {
+    public boolean equals(Object other) {
         if (!(other instanceof ByteWord)) {
             throw new WordMismatchException();
         }
