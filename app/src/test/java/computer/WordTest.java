@@ -1,21 +1,34 @@
 package computer;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import computer.byteword.ByteWord;
-import computer.longword.LongWord;
+import org.junit.jupiter.api.BeforeAll;
+import computer.byteword.*;
+import computer.longword.*;
 import exceptions.WordMismatchException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class WordTest {
-    LongWord lw1;
-    LongWord lw2;
-    LongWord lw3;
+    Word lw1;
+    Word lw2;
+    Word lw3;
 
-    ByteWord bw1;
-    ByteWord bw2;
-    ByteWord bw3;
+    Word bw1;
+    Word bw2;
+    Word bw3;
+
+    WordFactory lwf;
+    WordFactory bwf;
+
+    /*
+     * Create some word factories
+     */
+
+    @BeforeAll
+    void createWordFactories() {
+        this.lwf = new LongWordFactory();
+        this.bwf = new ByteWordFactory();
+    }
 
     /*
      * Create some words to be used for testing
@@ -23,13 +36,13 @@ class WordTest {
 
     @BeforeEach
     void createWords() {
-        this.lw1 = new LongWord("12");
-        this.lw2 = new LongWord("12");
-        this.lw3 = new LongWord("11");
+        this.lw1 = lwf.word("12");
+        this.lw2 = lwf.word("12");
+        this.lw3 = lwf.word("11");
 
-        this.bw1 = new ByteWord("1");
-        this.bw2 = new ByteWord("2");
-        this.bw3 = new ByteWord("3");
+        this.bw1 = bwf.word("1");
+        this.bw2 = bwf.word("2");
+        this.bw3 = bwf.word("3");
     }
 
     /*
@@ -40,8 +53,8 @@ class WordTest {
     void canCreateValidWords() {
         assertDoesNotThrow(
                 () -> {
-                    new LongWord("12");
-                    new ByteWord("100");
+                    lwf.word("12");
+                    bwf.word("100");
                 });
     }
 
@@ -50,22 +63,22 @@ class WordTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    new LongWord("Hejsan");
+                    lwf.word("Hejsan");
                 });
         assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    new LongWord("9223372036854775808");
+                    lwf.word("9223372036854775808");
                 });
         assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    new ByteWord("Hejsan");
+                    bwf.word("Hejsan");
                 });
         assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    new LongWord("128");
+                    lwf.word("128");
                 });
     }
 
@@ -75,18 +88,18 @@ class WordTest {
 
     @Test
     void equalWordsAreEqual() {
-        assertEquals(new LongWord("12"), new LongWord("12"));
-        assertEquals(new LongWord("-100"), new LongWord("-100"));
-        assertEquals(new ByteWord("2"), new ByteWord("2"));
-        assertEquals(new ByteWord("-120"), new ByteWord("-120"));
+        assertEquals(lwf.word("12"), lwf.word("12"));
+        assertEquals(lwf.word("-100"), lwf.word("-100"));
+        assertEquals(bwf.word("2"), bwf.word("2"));
+        assertEquals(bwf.word("-120"), bwf.word("-120"));
     }
 
     @Test
     void notEqualWordsAreNotEqual() {
-        assertNotEquals(new LongWord("12"), new LongWord("13"));
-        assertEquals(new LongWord("-100"), new LongWord("-99"));
-        assertEquals(new ByteWord("2"), new ByteWord("3"));
-        assertEquals(new ByteWord("-120"), new ByteWord("-119"));
+        assertNotEquals(lwf.word("12"), lwf.word("13"));
+        assertEquals(lwf.word("-100"), lwf.word("-99"));
+        assertEquals(bwf.word("2"), bwf.word("3"));
+        assertEquals(bwf.word("-120"), bwf.word("-119"));
     }
 
     /*
@@ -96,17 +109,17 @@ class WordTest {
     @Test
     void addBwStoreAtBw() {
         bw1.add(bw3, bw2);
-        assertEquals(bw2, new ByteWord("4"));
-        assertEquals(bw1, new ByteWord("1"));
-        assertEquals(bw3, new ByteWord("3"));
+        assertEquals(bw2, bwf.word("4"));
+        assertEquals(bw1, bwf.word("1"));
+        assertEquals(bw3, bwf.word("3"));
     }
 
     @Test
     void addLwStoreAtLw() {
         lw1.add(lw3, lw2);
-        assertEquals(bw2, new ByteWord("21"));
-        assertEquals(bw1, new ByteWord("12"));
-        assertEquals(bw3, new ByteWord("11"));
+        assertEquals(bw2, bwf.word("21"));
+        assertEquals(bw1, bwf.word("12"));
+        assertEquals(bw3, bwf.word("11"));
     }
 
     @Test
@@ -151,20 +164,20 @@ class WordTest {
 
     @Test
     void addTwoBwThatOverflows() {
-        var testBw1 = new ByteWord("127");
-        var testBw2 = new ByteWord("1");
-        var testBw3 = new ByteWord("0");
+        var testBw1 = bwf.word("127");
+        var testBw2 = bwf.word("1");
+        var testBw3 = bwf.word("0");
         testBw1.add(testBw2, testBw3);
-        assertEquals(testBw3, new ByteWord("0"));
+        assertEquals(testBw3, bwf.word("0"));
     }
 
     @Test
     void addTwoLwThatOverflows() {
-        var testLw1 = new LongWord("9223372036854775807");
-        var testLw2 = new LongWord("1");
-        var testLw3 = new LongWord("0");
+        var testLw1 = lwf.word("9223372036854775807");
+        var testLw2 = lwf.word("1");
+        var testLw3 = lwf.word("0");
         testLw1.add(testLw2, testLw3);
-        assertNotEquals(testLw3, new LongWord("9223372036854775808"));
+        assertNotEquals(testLw3, lwf.word("9223372036854775808"));
     }
 
     @Test
@@ -175,7 +188,7 @@ class WordTest {
 
     @Test
     void EqualsByteWord() {
-        var word = new ByteWord("3");
+        var word = bwf.word("3");
         assertTrue(bw3.equals(word));
         assertFalse(bw2.equals(word));
     }
@@ -195,48 +208,48 @@ class WordTest {
 
     @Test
     void canMulTwoByteWords() {
-        var word = new ByteWord("5");
+        var word = bwf.word("5");
         bw2.mul(bw3, word);
-        assertEquals(new ByteWord("6"), word);
+        assertEquals(bwf.word("6"), word);
 
         bw3.mul(bw1, word);
-        assertEquals(new ByteWord("3"), word);
+        assertEquals(bwf.word("3"), word);
     }
 
     @Test
     void canMulTwoLongWords() {
-        var word = new LongWord("5");
-        lw1.mul(new LongWord("2"), word);
-        assertEquals(new LongWord("24"), word);
+        var word = lwf.word("5");
+        lw1.mul(lwf.word("2"), word);
+        assertEquals(lwf.word("24"), word);
 
         lw1.mul(lw2, word);
-        assertEquals(new LongWord("144"), word);
+        assertEquals(lwf.word("144"), word);
     }
 
     @Test
     void mulByteWordLongWord() {
 
-        var word = new ByteWord("5");
-        bw1.mul(new ByteWord("2"), word);
-        assertEquals(new ByteWord("2"), word);
+        var word = bwf.word("5");
+        bw1.mul(bwf.word("2"), word);
+        assertEquals(bwf.word("2"), word);
 
         bw2.mul(bw3, word);
-        assertEquals(new ByteWord("6"), word);
+        assertEquals(bwf.word("6"), word);
     }
 
     @Test
     void copyByteWord() {
         // copy argument onto this, overwrite this
         bw1.copy(bw2);
-        assertEquals(bw1, new ByteWord("2"));
-        assertEquals(bw2, new ByteWord("2"));
+        assertEquals(bw1, bwf.word("2"));
+        assertEquals(bw2, bwf.word("2"));
     }
 
     @Test
     void copyLongWord() {
         // copy argument onto this, overwrite this
         lw1.copy(lw3);
-        assertEquals(lw1, new ByteWord("11"));
-        assertEquals(lw3, new ByteWord("11"));
+        assertEquals(lw1, lwf.word("11"));
+        assertEquals(lw3, lwf.word("11"));
     }
 }

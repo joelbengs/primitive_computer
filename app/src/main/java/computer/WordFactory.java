@@ -1,3 +1,5 @@
 package computer;
 
-public class WordFactory {}
+public interface WordFactory {
+    public Word word(String value);
+}
