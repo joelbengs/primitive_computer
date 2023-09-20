@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>4</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>424</x><y>120</y><w>84</w><h>76</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>504</x><y>0</y><w>168</w><h>152</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 Package::Computer
 Program
 --
@@ -6,28 +6,28 @@ Program
 +Program(String value, WordFactory wf)
 +add(Operand) (implemented here or below?)
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>248</y><w>84</w><h>76</h></coordinates><panel_attributes>Package::Computer
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>416</x><y>256</y><w>168</w><h>152</h></coordinates><panel_attributes>Package::Computer
 Factorial
 --
 --
 +Factorial(String value, WordFactory wf)
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>416</x><y>192</y><w>60</w><h>64</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>110;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>476</x><y>248</y><w>84</w><h>76</h></coordinates><panel_attributes>Package::Computer
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>488</x><y>144</y><w>120</w><h>128</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>110;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>256</y><w>168</w><h>152</h></coordinates><panel_attributes>Package::Computer
 Sum
 --
 --
 +Sum(String value, WordFactory wf)
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>472</x><y>192</y><w>60</w><h>64</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;110;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>184</x><y>120</y><w>84</w><h>76</h></coordinates><panel_attributes>Package::Computer
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>144</y><w>120</w><h>128</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;110;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>0</y><w>168</w><h>152</h></coordinates><panel_attributes>Package::Main
 App
 --
 --
 +main(String[] args)
 +run(String message, Program program, WordFactory wf)
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>120</y><w>84</w><h>76</h></coordinates><panel_attributes>Package::Computer
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>272</x><y>0</y><w>168</w><h>152</h></coordinates><panel_attributes>Package::Computer
 Computer
 --
 --
@@ -35,7 +35,7 @@ Computer
 +load(Program) : void
 +run() : void
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>120</y><w>84</w><h>76</h></coordinates><panel_attributes>Package::Computer
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>736</x><y>0</y><w>168</w><h>152</h></coordinates><panel_attributes>Package::Computer
 ProgramCounter
 --
 -count : Int
@@ -43,4 +43,4 @@ ProgramCounter
 +ProgramCounter(Integer)
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>156</y><w>52</w><h>16</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>388</x><y>156</y><w>44</w><h>16</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>152</y><w>44</w><h>16</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>72</y><w>104</w><h>32</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>72</y><w>88</w><h>32</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>Relation</id><coordinates><x>664</x><y>64</y><w>88</w><h>32</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element></diagram>
