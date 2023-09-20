@@ -118,9 +118,9 @@ class WordTest {
     @Test
     void addLwStoreAtLw() {
         lw1.add(lw3, lw2);
-        assertEquals(bw2, bwf.word("21"));
-        assertEquals(bw1, bwf.word("12"));
-        assertEquals(bw3, bwf.word("11"));
+        assertEquals(lw2, lwf.word("23"));
+        assertEquals(lw1, lwf.word("12"));
+        assertEquals(lw3, lwf.word("11"));
     }
 
     @Test
