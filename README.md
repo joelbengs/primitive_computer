@@ -39,9 +39,9 @@ Updated class diagram for `Add`:
 
 An `Add` object is constructed by passing into it two `Operand` objects (either an `Address` or `Word`), which will constitute the left and right operands  of the instruction ('arguments'), and one `Address`, which will store the result.
 
-When an `Add` object is executed, it accesses its operands (`left` and `right`) using the `getWord(Memory)` method defined in the `Operand` interface. For regular words, the expected implementation is that it will just return itself, but on `Address` objects it looks up the `Word` stored in that memory address. The reason this method needs to take a `Memory` object as an argument is because a memory lookup is needed in the general case (when trying to convert an `Address` into a `Word`). The `word` implementation on `Address` looks up which word is stored at that address by passing itself into the `wordAt(Address) : Word` method of the `Memory` class.
+When an `Add` object is executed, it accesses its operands (`left` and `right`) and where to store the result (`result`) using the `getWord(Memory)` method defined in the `Operand` interface. For regular words, the expected implementation is that it will just return itself, but on `Address` objects it looks up the `Word` stored in that memory address. The reason this method needs to take a `Memory` object as an argument is because a memory lookup is needed in the general case (when trying to convert an `Address` into a `Word`). The `getWord` implementation in `Address` looks up which word is stored at that address by passing itself into the `wordAt(Integer) : Word` method of the `Memory` class.
 
-At this point we have two `Word` objects that need to be added together. Since we have many different possible implementations of `Word`, and because the implementation is opaque, the `Add` class can't possibly know how to add any two words together. This is instead delegated to a method in `Word`, which means that it is the responsibility of each implementing class to know how to add two words together. The `add` method takes two parameters: a word to add itself to, and a word where the result will be stored. This 'result' word can be taken directly from RAM.
+At this point we have two `Word` objects that need to be added together. Since we have many different possible implementations of `Word`, and because the implementation is opaque, the `Add` class can't possibly know how to add any two words together. This is instead delegated to a method in `Word`, which means that it is the responsibility of each implementing class to know how to add two words together, as well as storing the result in memory, overwriting the word previously stored there. The `add` method takes two parameters: a word to add itself to, and a word where the result will be stored. This 'result' word can be taken directly from RAM.
 
 #### O6: What information do we need to get the value of an operand?
 
@@ -76,6 +76,7 @@ Each `Word` additionally needs the following methods:
 - A `mul` method that can be called from the `Mul` class.
 - A method to print a word, for use with the `Print` instruction.
 - An `equals` method to compare two words.
+- A `copy` method to copy itself into another word.
 
 #### W7: What should happen if someone creates a LongWordFactory (lwf), and a ByteWordFactory (bwf), and makes the following (erroneous) call?
 
@@ -97,26 +98,26 @@ Class diagram:
 
 #### I2: In what class, and in what method, are the programs actually executed (i.e., where do we call execute(...) on our instructions)?
 
-The `Computer.run()` method calls the `Program.run()` method, which in turn calls `execute()` on all its instructions.
+The `Computer.run()` method calls `execute()` on all the instructions in the current program.
 
 #### I3: How do we keep track of what's the next instruction to execute?
 
-By a program counter field in the `Program` class.
+By a `ProgramCounter` instance in the `Computer` class.
 
 #### I4: What values do the instructions need to have when we call execute(...)?
 
-We need to pass all data that all the implementing classes could need for their execution. Some only need access to the memory (`Add`, `Mul`), some also to the program counter (`Jump`, `JumpEq`), and some to other Computer state (`Halt`). We have chosen to pass the entire `Computer` object to each instruction, to do with it as they please.
+We need to pass all data that all the implementing classes could need for their execution. Some only need access to the memory (`Add`, `Mul`), some also to the program counter (`Jump`, `JumpEq`, `Halt`). We are passing both a `Memory` and `ProgramCounter` instance to each instruction.
 
 ### Packages
 
 #### P1: What packages do you want to divide the code into? How do they depend on each other?
 
-The project is divided into four packages:
+The project is divided into the following packages:
 
 - `programs`, where the example programs are located,
 - `instructions`, where the instruction classes are located,
-- `words`, where all the `Word` implementations reside, and
-- `computer`, where the rest of the computer (memory etc.) is located.
+- one package for each word type, and
+- `computer`, where the rest of the computer (memory etc.) is located, including the abstract `Word` class.
 
 ### Additional resources
 

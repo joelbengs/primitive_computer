@@ -97,12 +97,13 @@ r2=1</panel_attributes>
       <x>448</x>
       <y>232</y>
       <w>168</w>
-      <h>56</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>*Address*
 --
--address : int
+-address : Integer
 --
++Address(Integer)
 +getWord(Memory) : Word</panel_attributes>
     <additional_attributes/>
   </element>
@@ -173,7 +174,7 @@ calls add</panel_attributes>
     <panel_attributes>*Memory*
 --
 --
-+wordAt(Address) : Word</panel_attributes>
++wordAt(Integer) : Word</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
