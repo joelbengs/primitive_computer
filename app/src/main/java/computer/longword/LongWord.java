@@ -12,14 +12,31 @@ public class LongWord extends Word{
     }
 
     public void add(Word other, Word result) {
-        result.copy(this.getWord(null) + other.getWord(null));
+        if(!(other instanceof LongWord && result instanceof LongWord)){
+            throw new WordMismatchException();
+        }
+        ((LongWord) result).l = (this.l + ((LongWord)other).l);
+    }
+    
+
+    public void mul(Word other, Word result) {
+        if (!(other instanceof LongWord && result instanceof LongWord)){
+            throw new WordMismatchException();
+        }
+        ((LongWord) result).l = (this.l * ((LongWord)other).l);
+    }
+    @Override
+    public boolean equals(Word other) {
+        if (!(other instanceof LongWord)){
+            throw new WordMismatchException();
+        }else{
+        return (((LongWord) other).l == this.l);
+        }
     }
 
-    public void mul(Word other, Word result) {}
-
-    public boolean equals(Word other) {}
-
-    public void print() {}
+    public void print() {
+        System.out.println(l);
+    }
 
     public static void copyStatic(Word source, Word destination) {
         if(source instanceof LongWord && destination instanceof LongWord){
@@ -33,6 +50,6 @@ public class LongWord extends Word{
         }
             this.l = ((LongWord) other).l;
         }
-    }
+    
 
 }
