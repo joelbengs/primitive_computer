@@ -71,7 +71,9 @@ r2=1</panel_attributes>
 +getWord(Memory) : void
 /+add(Word, Word) : void/
 /+mul(Word, Word) : void/
-/+equals(Word) : boolean/</panel_attributes>
+/+print() : void/
+/+equals(Word) : boolean/
+/+copy(Word) : void/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
