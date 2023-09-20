@@ -1,6 +1,8 @@
 package computer.longword;
 
 import computer.Word;
+import exceptions.WordMismatchException;
+import exceptions.*;
 
 public class LongWord extends Word{
     private long l;
@@ -9,7 +11,9 @@ public class LongWord extends Word{
         
     }
 
-    public void add(Word other, Word result) {}
+    public void add(Word other, Word result) {
+        result.copy(this.getWord(null) + other.getWord(null));
+    }
 
     public void mul(Word other, Word result) {}
 
@@ -17,7 +21,18 @@ public class LongWord extends Word{
 
     public void print() {}
 
-    public void copy(Word other) {
-
+    public static void copyStatic(Word source, Word destination) {
+        if(source instanceof LongWord && destination instanceof LongWord){
+            ((LongWord) destination).l = ((LongWord) source).l;
+        }
     }
+
+     public void copy(Word other) {
+        if(!(other instanceof LongWord)){
+            throw new WordMismatchException();
+        }
+            this.l = ((LongWord) other).l;
+        }
+    }
+
 }
