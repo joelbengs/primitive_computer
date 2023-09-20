@@ -90,7 +90,9 @@ r2=1</panel_attributes>
 --
 +add(Word, Word) : void
 +mul(Word, Word) : void
-+equals(Word) : boolean</panel_attributes>
++equals(Word) : boolean
++print() : void
++copy(Word) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -204,7 +206,9 @@ calls add</panel_attributes>
 --
 +add(Word, Word) : void
 +mul(Word, Word) : void
-+equals(Word) : boolean</panel_attributes>
++equals(Word) : boolean
++print() : void
++copy(Word) : void</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
