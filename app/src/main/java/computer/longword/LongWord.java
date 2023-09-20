@@ -5,15 +5,19 @@ import computer.Word;
 public class LongWord extends Word{
     private long l;
 
-    public LongWord(String s) {}
+    public LongWord(String s) {
+        
+    }
 
-    public void add(Word w1, Word w2) {}
+    public void add(Word other, Word result) {}
 
-    public void mull(Word w1, Word w2) {}
+    public void mul(Word other, Word result) {}
 
-    public boolean equals(Word w) {}
+    public boolean equals(Word other) {}
 
     public void print() {}
-    
-    public void copy(Word w) {}
+
+    public void copy(Word other) {
+
+    }
 }
