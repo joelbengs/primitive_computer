@@ -1,8 +1,8 @@
 package computer.byteword;
 
-import java.util.function.BinaryOperator;
 import computer.Word;
 import exceptions.WordMismatchException;
+import java.util.function.BinaryOperator;
 
 public class ByteWord extends Word {
     private byte b;
@@ -17,7 +17,7 @@ public class ByteWord extends Word {
         }
         var otherByteWord = (ByteWord) other;
         var resultByteWord = (ByteWord) result;
-        resultByteWord.b = operator.apply(otherByteWord.b,this.b);
+        resultByteWord.b = operator.apply(otherByteWord.b, this.b);
     }
 
     @Override

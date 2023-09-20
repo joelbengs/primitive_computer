@@ -11,8 +11,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class PrintTest {
-    private final static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final static PrintStream originalOut = System.out;
+    private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static final PrintStream originalOut = System.out;
     static LongWordFactory lwf;
     static ByteWordFactory bwf;
 
