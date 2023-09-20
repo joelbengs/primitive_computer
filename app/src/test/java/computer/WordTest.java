@@ -1,10 +1,11 @@
 package computer;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeAll;
+
 import computer.byteword.*;
 import computer.longword.*;
 import exceptions.WordMismatchException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,17 +18,17 @@ class WordTest {
     Word bw2;
     Word bw3;
 
-    WordFactory lwf;
-    WordFactory bwf;
+    static WordFactory lwf;
+    static WordFactory bwf;
 
     /*
      * Create some word factories
      */
 
     @BeforeAll
-    void createWordFactories() {
-        this.lwf = new LongWordFactory();
-        this.bwf = new ByteWordFactory();
+    static void createWordFactories() {
+        lwf = new LongWordFactory();
+        bwf = new ByteWordFactory();
     }
 
     /*
@@ -181,20 +182,20 @@ class WordTest {
     }
 
     @Test
-    void EqualsLongWord() {
+    void equalsLongWord() {
         assertTrue(lw1.equals(lw2));
         assertFalse(lw1.equals(lw3));
     }
 
     @Test
-    void EqualsByteWord() {
+    void equalsByteWord() {
         var word = bwf.word("3");
         assertTrue(bw3.equals(word));
         assertFalse(bw2.equals(word));
     }
 
     @Test
-    void EqualsLongWordByteWord() {
+    void equalsLongWordByteWord() {
         assertThrows(
                 WordMismatchException.class,
                 () -> {
