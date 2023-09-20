@@ -1,5 +1,3 @@
 package computer;
 
-public class Address {
-    
-}
+public class Address {}

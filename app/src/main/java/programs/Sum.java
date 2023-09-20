@@ -2,7 +2,6 @@ package programs;
 
 import computer.*;
 import instructions.*;
-import instructions.binop.Add;
 
 // public class Sum extends Program {
 

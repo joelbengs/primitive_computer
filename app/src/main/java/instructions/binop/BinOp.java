@@ -1,5 +1,3 @@
 package instructions.binop;
 
-public class BinOp {
-    
-}
+public class BinOp {}

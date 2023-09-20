@@ -1,5 +1,3 @@
 package instructions;
 
-public class JumpEq {
-    
-}
+public class JumpEq {}

@@ -1,5 +1,3 @@
 package computer;
 
-public class InstructionCounter {
-    
-}
+public class InstructionCounter {}

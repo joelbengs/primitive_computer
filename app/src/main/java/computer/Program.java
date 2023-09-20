@@ -1,5 +1,3 @@
 package computer;
 
-public class Program {
-    
-}
+public class Program {}

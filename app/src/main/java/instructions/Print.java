@@ -1,5 +1,3 @@
 package instructions;
 
-public class Print {
-    
-}
+public class Print {}

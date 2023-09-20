@@ -2,8 +2,6 @@ package programs;
 
 import computer.*;
 import instructions.*;
-import instructions.binop.Add;
-import instructions.binop.Mul;
 
 // public class Factorial extends Program {
 

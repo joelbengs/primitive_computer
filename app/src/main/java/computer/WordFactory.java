@@ -1,5 +1,3 @@
 package computer;
 
-public class WordFactory {
-    
-}
+public class WordFactory {}

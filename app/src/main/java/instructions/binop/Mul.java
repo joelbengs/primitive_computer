@@ -1,5 +1,3 @@
 package instructions.binop;
 
-public class Mul {
-    
-}
+public class Mul {}

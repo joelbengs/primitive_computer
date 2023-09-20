@@ -1,5 +1,3 @@
 package computer;
 
-public class Word {
-    
-}
+public class Word {}

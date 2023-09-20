@@ -1,5 +1,3 @@
 package instructions;
 
-public class Halt {
-    
-}
+public class Halt {}

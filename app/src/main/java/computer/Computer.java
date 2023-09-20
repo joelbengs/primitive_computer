@@ -1,5 +1,3 @@
 package computer;
 
-public class Computer {
-    
-}
+public class Computer {}
