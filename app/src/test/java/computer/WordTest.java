@@ -79,7 +79,7 @@ class WordTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    lwf.word("128");
+                    bwf.word("128");
                 });
     }
 
@@ -98,9 +98,9 @@ class WordTest {
     @Test
     void notEqualWordsAreNotEqual() {
         assertNotEquals(lwf.word("12"), lwf.word("13"));
-        assertEquals(lwf.word("-100"), lwf.word("-99"));
-        assertEquals(bwf.word("2"), bwf.word("3"));
-        assertEquals(bwf.word("-120"), bwf.word("-119"));
+        assertNotEquals(lwf.word("-100"), lwf.word("-99"));
+        assertNotEquals(bwf.word("2"), bwf.word("3"));
+        assertNotEquals(bwf.word("-120"), bwf.word("-119"));
     }
 
     /*
@@ -169,7 +169,7 @@ class WordTest {
         var testBw2 = bwf.word("1");
         var testBw3 = bwf.word("0");
         testBw1.add(testBw2, testBw3);
-        assertEquals(testBw3, bwf.word("0"));
+        assertEquals(bwf.word("-128"), testBw3);
     }
 
     @Test
@@ -178,7 +178,7 @@ class WordTest {
         var testLw2 = lwf.word("1");
         var testLw3 = lwf.word("0");
         testLw1.add(testLw2, testLw3);
-        assertNotEquals(testLw3, lwf.word("9223372036854775808"));
+        assertEquals(lwf.word("-9223372036854775808"), testLw3);
     }
 
     @Test
@@ -224,7 +224,7 @@ class WordTest {
         assertEquals(lwf.word("24"), word);
 
         lw1.mul(lw2, word);
-        assertEquals(lwf.word("144"), word);
+        assertEquals(word, lwf.word("144"));
     }
 
     @Test
@@ -232,25 +232,25 @@ class WordTest {
 
         var word = bwf.word("5");
         bw1.mul(bwf.word("2"), word);
-        assertEquals(bwf.word("2"), word);
+        assertEquals(word, bwf.word("2"));
 
         bw2.mul(bw3, word);
-        assertEquals(bwf.word("6"), word);
+        assertEquals(word, bwf.word("6"));
     }
 
     @Test
     void copyByteWord() {
         // copy argument onto this, overwrite this
         bw1.copy(bw2);
-        assertEquals(bw1, bwf.word("2"));
-        assertEquals(bw2, bwf.word("2"));
+        assertEquals(bwf.word("2"), bw1);
+        assertEquals(bwf.word("2"), bw2);
     }
 
     @Test
     void copyLongWord() {
         // copy argument onto this, overwrite this
         lw1.copy(lw3);
-        assertEquals(lw1, lwf.word("11"));
-        assertEquals(lw3, lwf.word("11"));
+        assertEquals(lwf.word("11"), lw1);
+        assertEquals(lwf.word("11"), lw3);
     }
 }
