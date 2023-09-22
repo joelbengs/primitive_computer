@@ -47,4 +47,9 @@ public class ByteWord extends Word {
     public void copy(Word source) {
         this.b = ((ByteWord) source).b;
     }
+
+    @Override
+    public String toString() {
+        return "ByteWord=" + b;
+    }
 }

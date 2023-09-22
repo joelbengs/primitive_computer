@@ -49,4 +49,9 @@ public class LongWord extends Word {
         }
         this.l = ((LongWord) other).l;
     }
+
+    @Override
+    public String toString() {
+        return "LongWord=" + l;
+    }
 }
