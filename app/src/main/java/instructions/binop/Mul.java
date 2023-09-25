@@ -11,7 +11,7 @@ public class Mul extends BinOp {
     }
 
     public void evaluate(Word left, Word right, Word result) {
-        result.mul(left, right);
+        left.mul(right, result);
     }
 
     @Override

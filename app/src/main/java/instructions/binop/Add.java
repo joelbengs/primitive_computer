@@ -12,7 +12,7 @@ public class Add extends BinOp {
 
     @Override
     public void evaluate(Word left, Word right, Word result) {
-        result.add(left, right);
+        left.add(right, result);
     }
 
     @Override
