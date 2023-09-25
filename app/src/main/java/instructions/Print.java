@@ -15,5 +15,6 @@ public class Print implements Instruction {
     public void execute(Memory memory, InstructionCounter instructionCounter) {
         var word = op.getWord(memory);
         System.out.println(word);
+        instructionCounter.increment();
     }
 }

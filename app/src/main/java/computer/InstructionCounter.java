@@ -1,3 +1,22 @@
 package computer;
 
-public class InstructionCounter {}
+public class InstructionCounter {
+    public int currentInstruction = 0;
+    public boolean running = false;
+
+    public void increment() {
+        currentInstruction++;
+    }
+
+    public void set(Address destination) {
+        currentInstruction = destination.getAsInt();
+    }
+
+    public void halt() {
+        running = false;
+    }
+
+    public void start() {
+        running = true;
+    }
+}

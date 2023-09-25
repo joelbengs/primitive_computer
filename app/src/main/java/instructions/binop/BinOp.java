@@ -25,5 +25,6 @@ public abstract class BinOp implements Instruction {
         var wordRight = right.getWord(memory);
         var wordResult = result.getWord(memory);
         evaluate(wordLeft, wordRight, wordResult);
+        instructionCounter.increment();
     }
 }
