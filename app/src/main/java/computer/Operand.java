@@ -1,3 +1,5 @@
 package computer;
 
-public interface Operand {}
+public interface Operand {
+    public Word getWord(Memory memory);
+}
