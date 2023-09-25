@@ -1,9 +1,8 @@
 package computer.longword;
 
-import java.util.function.BinaryOperator;
-
 import computer.Word;
 import exceptions.WordMismatchException;
+import java.util.function.BinaryOperator;
 
 public class LongWord extends Word {
     private long l;
@@ -11,13 +10,14 @@ public class LongWord extends Word {
     public LongWord(long l) {
         this.l = l;
     }
+
     private void calculate(Word other, Word result, BinaryOperator<Long> operator) {
         if (!(other instanceof LongWord) || !(result instanceof LongWord)) {
             throw new WordMismatchException();
         }
         var otherLongWord = (LongWord) other;
         var resultLongWord = (LongWord) result;
-        resultLongWord.l = operator.apply(otherLongWord.l,this.l);
+        resultLongWord.l = operator.apply(otherLongWord.l, this.l);
     }
 
     public void add(Word other, Word result) {
