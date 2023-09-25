@@ -14,4 +14,8 @@ public abstract class Program {
     public void add(Instruction instruction) {
         this.instructions.add(instruction);
     }
+
+    public Instruction getCurrentInstruction(InstructionCounter instructionCounter) {
+        return this.instructions.get(instructionCounter.getCurrentInstruction());
+    }
 }

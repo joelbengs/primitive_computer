@@ -1,8 +1,16 @@
 package computer;
 
 public class InstructionCounter {
-    public int currentInstruction = 0;
-    public boolean running = false;
+    private int currentInstruction = 0;
+    private boolean running = false;
+
+    public int getCurrentInstruction() {
+        return currentInstruction;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
 
     public void increment() {
         currentInstruction++;

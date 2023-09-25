@@ -14,5 +14,11 @@ public class Computer {
         this.program = program;
     }
 
-    public void run() {}
+    public void run() {
+        this.instructionCounter.start();
+        while (this.instructionCounter.isRunning()) {
+            var instruction = this.program.getCurrentInstruction(this.instructionCounter);
+            instruction.execute(this.memory, this.instructionCounter);
+        }
+    }
 }
