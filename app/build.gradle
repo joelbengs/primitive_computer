@@ -9,6 +9,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id "com.diffplug.spotless" version "6.21.0"
+    id 'jacoco'
 }
 
 repositories {
@@ -45,4 +46,8 @@ spotless {
     // fix formatting of type annotations
     formatAnnotations()
   }
+}
+
+jacocoTestReport {
+    dependsOn test
 }
