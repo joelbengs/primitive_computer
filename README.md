@@ -20,7 +20,6 @@ Here are some useful resources on design patterns. To start with, [Fireship's](h
 ## Sequence Diagram - Add
 Below is a sequence diagram for executing the Add instruction.
 
-Class diagram:
 ![Sequence diagram add](assets/sequence_diagram_add.png)
 
 This corresponds to the execution of the following code, ineherited from the BinOp class, which Add extends.
