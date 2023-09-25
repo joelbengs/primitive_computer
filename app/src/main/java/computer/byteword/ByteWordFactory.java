@@ -1,9 +1,11 @@
 package computer.byteword;
 
+import computer.Word;
 import computer.WordFactory;
 
 public class ByteWordFactory implements WordFactory {
 
+    @Override
     public ByteWord word(String s) {
         try {
             byte b = Byte.parseByte(s);
@@ -11,5 +13,10 @@ public class ByteWordFactory implements WordFactory {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public Word defaultWord() {
+        return new ByteWord((byte) 0);
     }
 }

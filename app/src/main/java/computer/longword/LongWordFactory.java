@@ -1,5 +1,6 @@
 package computer.longword;
 
+import computer.Word;
 import computer.WordFactory;
 
 public class LongWordFactory implements WordFactory {
@@ -12,5 +13,10 @@ public class LongWordFactory implements WordFactory {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public Word defaultWord() {
+        return new LongWord(0);
     }
 }
