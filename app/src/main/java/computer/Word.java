@@ -1,8 +1,9 @@
 package computer;
 
-public abstract class Word {
-    public Word getWord(Memory mem) {
-        return null;
+public abstract class Word implements Operand {
+    @Override
+    public Word getWord(Memory memory) {
+        return this;
     }
 
     public abstract void add(Word other, Word result);
