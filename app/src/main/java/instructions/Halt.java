@@ -9,4 +9,9 @@ public class Halt implements Instruction {
     public void execute(Memory memory, InstructionCounter instructionCounter) {
         instructionCounter.halt();
     }
+
+    @Override
+    public String toString() {
+        return "Halt";
+    }
 }

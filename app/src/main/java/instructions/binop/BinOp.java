@@ -9,8 +9,8 @@ import instructions.Instruction;
 
 public abstract class BinOp implements Instruction {
 
-    private Operand left, right;
-    private Address result;
+    protected Operand left, right;
+    protected Address result;
 
     public BinOp(Operand left, Operand right, Address result) {
         this.left = left;

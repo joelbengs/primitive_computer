@@ -24,4 +24,14 @@ public class JumpEq implements Instruction {
             instructionCounter.increment();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Jump to "
+                + this.destination
+                + " if "
+                + this.left.toString()
+                + " == "
+                + this.right.toString();
+    }
 }

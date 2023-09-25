@@ -50,6 +50,6 @@ public class ByteWord extends Word {
 
     @Override
     public String toString() {
-        return "ByteWord=" + b;
+        return Byte.toString(b);
     }
 }

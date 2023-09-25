@@ -34,7 +34,8 @@ public class App {
 class Factorial extends Program {
 
     public Factorial(String value, WordFactory wf) {
-        Address n = new Address(0), fac = new Address(1);
+        Address n = new Address(0);
+        Address fac = new Address(1);
         add(new Copy(wf.word(value), n));
         add(new Copy(wf.word("1"), fac));
         add(new JumpEq(6, n, wf.word("1")));
@@ -49,7 +50,8 @@ class Factorial extends Program {
 class Sum extends Program {
 
     public Sum(String value, WordFactory wf) {
-        Address n = new Address(0), sum = new Address(1);
+        Address n = new Address(0);
+        Address sum = new Address(1);
         add(new Copy(wf.word(value), n));
         add(new Copy(wf.word("1"), sum));
         add(new JumpEq(6, n, wf.word("1")));

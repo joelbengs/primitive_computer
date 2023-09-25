@@ -5,7 +5,7 @@ import computer.InstructionCounter;
 import computer.Memory;
 import computer.Operand;
 
-public class Copy {
+public class Copy implements Instruction {
     private Operand operand;
     private Address adress;
 
@@ -17,5 +17,10 @@ public class Copy {
     public void execute(Memory memory, InstructionCounter counter) {
         this.adress.getWord(memory).copy(this.operand.getWord(memory));
         counter.increment();
+    }
+
+    @Override
+    public String toString() {
+        return "Copy " + this.operand + " to " + this.adress;
     }
 }

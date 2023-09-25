@@ -17,4 +17,9 @@ public class Print implements Instruction {
         System.out.println(word);
         instructionCounter.increment();
     }
+
+    @Override
+    public String toString() {
+        return "Print " + this.op;
+    }
 }

@@ -13,4 +13,9 @@ public class Mul extends BinOp {
     public void evaluate(Word left, Word right, Word result) {
         result.mul(left, right);
     }
+
+    @Override
+    public String toString() {
+        return "Multiply " + this.left.toString() + " and " + this.right + " into " + this.result;
+    }
 }

@@ -13,4 +13,9 @@ public class Jump implements Instruction {
     public void execute(Memory memory, InstructionCounter instructionCounter) {
         instructionCounter.set(destination);
     }
+
+    @Override
+    public String toString() {
+        return "Jump to " + this.destination;
+    }
 }

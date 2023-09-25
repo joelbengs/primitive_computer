@@ -14,4 +14,9 @@ public class Add extends BinOp {
     public void evaluate(Word left, Word right, Word result) {
         result.add(left, right);
     }
+
+    @Override
+    public String toString() {
+        return "Add " + this.left.toString() + " and " + this.right + " into " + this.result;
+    }
 }

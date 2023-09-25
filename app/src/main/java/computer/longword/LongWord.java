@@ -56,6 +56,6 @@ public class LongWord extends Word {
 
     @Override
     public String toString() {
-        return "LongWord=" + l;
+        return Long.toString(l);
     }
 }

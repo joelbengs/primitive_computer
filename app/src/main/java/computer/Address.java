@@ -15,4 +15,9 @@ public class Address implements Operand {
     public Word getWord(Memory memory) {
         return memory.wordAt(address);
     }
+
+    @Override
+    public String toString() {
+        return "[" + address + "]";
+    }
 }
