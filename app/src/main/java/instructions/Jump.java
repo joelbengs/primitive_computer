@@ -1,17 +1,16 @@
 package instructions;
 
-import computer.Address;
 import computer.InstructionCounter;
 import computer.Memory;
 
 public class Jump implements Instruction {
-    private Address address;
+    private int destination;
 
-    public Jump(Address address) {
-        this.address = address;
+    public Jump(int destination) {
+        this.destination = destination;
     }
 
     public void execute(Memory memory, InstructionCounter instructionCounter) {
-        instructionCounter.set(address);
+        instructionCounter.set(destination);
     }
 }

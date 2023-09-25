@@ -8,8 +8,8 @@ public class InstructionCounter {
         currentInstruction++;
     }
 
-    public void set(Address destination) {
-        currentInstruction = destination.getAsInt();
+    public void set(int destination) {
+        currentInstruction = destination;
     }
 
     public void halt() {

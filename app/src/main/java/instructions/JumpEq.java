@@ -1,18 +1,17 @@
 package instructions;
 
-import computer.Address;
 import computer.InstructionCounter;
 import computer.Memory;
 import computer.Operand;
 
 public class JumpEq implements Instruction {
     private Operand left, right;
-    private Address destination;
+    private int destination;
 
-    public JumpEq(Operand left, Operand right, Address destination) {
+    public JumpEq(int destination, Operand left, Operand right) {
+        this.destination = destination;
         this.left = left;
         this.right = right;
-        this.destination = destination;
     }
 
     @Override
