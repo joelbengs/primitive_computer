@@ -5,11 +5,11 @@ import java.util.function.BinaryOperator;
 import computer.Word;
 import exceptions.WordMismatchException;
 
-public class LongWord extends Word{
+public class LongWord extends Word {
     private long l;
 
-    public LongWord(String s) {
-        
+    public LongWord(long l) {
+        this.l = l;
     }
     private void calculate(Word other, Word result, BinaryOperator<Long> operator) {
         if (!(other instanceof LongWord) || !(result instanceof LongWord)) {
@@ -23,17 +23,17 @@ public class LongWord extends Word{
     public void add(Word other, Word result) {
         calculate(other, result, (x, y) -> (long) (x + y));
     }
-    
 
     public void mul(Word other, Word result) {
         calculate(other, result, (x, y) -> (long) (x * y));
     }
+
     @Override
-    public boolean equals(Word other) {
-        if (!(other instanceof LongWord)){
+    public boolean equals(Object other) {
+        if (!(other instanceof LongWord)) {
             throw new WordMismatchException();
-        }else{
-        return (((LongWord) other).l == this.l);
+        } else {
+            return (((LongWord) other).l == this.l);
         }
     }
 
@@ -42,17 +42,20 @@ public class LongWord extends Word{
     }
 
     public static void copyStatic(Word source, Word destination) {
-        if(source instanceof LongWord && destination instanceof LongWord){
+        if (source instanceof LongWord && destination instanceof LongWord) {
             ((LongWord) destination).l = ((LongWord) source).l;
         }
     }
 
-     public void copy(Word other) {
-        if(!(other instanceof LongWord)){
+    public void copy(Word other) {
+        if (!(other instanceof LongWord)) {
             throw new WordMismatchException();
         }
-            this.l = ((LongWord) other).l;
-        }
-    
+        this.l = ((LongWord) other).l;
+    }
 
+    @Override
+    public String toString() {
+        return "LongWord=" + l;
+    }
 }

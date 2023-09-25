@@ -8,11 +8,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PrintTest {
-    private final static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final static PrintStream originalOut = System.out;
+    private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static final PrintStream originalOut = System.out;
     static LongWordFactory lwf;
     static ByteWordFactory bwf;
 
@@ -22,7 +23,7 @@ public class PrintTest {
      */
 
     @BeforeAll
-    void setUpStreams() {
+    static void setUpStreams() {
         System.setOut(new PrintStream(outContent));
         lwf = new LongWordFactory();
         bwf = new ByteWordFactory();
@@ -33,15 +34,20 @@ public class PrintTest {
         System.setOut(originalOut);
     }
 
+    @BeforeEach
+    void cleanUpsStream() {
+        outContent.reset();
+    }
+
     @Test
     void testByteWordPrint() {
         bwf.word("12").print();
-        assertEquals("12", outContent.toString());
+        assertEquals("12\n", outContent.toString());
     }
 
     @Test
     void testLongWordPrint() {
         lwf.word("120").print();
-        assertEquals("120", outContent.toString());
+        assertEquals("120\n", outContent.toString());
     }
 }

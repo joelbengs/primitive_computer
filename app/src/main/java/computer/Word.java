@@ -11,7 +11,7 @@ public abstract class Word {
 
     public abstract void print();
 
-    public abstract boolean equals(Word other);
+    public abstract boolean equals(Object other);
 
     public abstract void copy(Word source);
 }
