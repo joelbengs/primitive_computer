@@ -1,8 +1,38 @@
 # EDAF60 2023 Computer Group 46
 
-Hey Group 46!
+This project modeles a simple computer, with internal memory and the power to execute the seven basic commands. The computer can run programs and du calculations over different datatypes.
 
-Here are some useful resources on design patterns. To start with, Fireship's videos are _always_ [fire](https://www.youtube.com/watch?v=tv-_1er1mWI). [Refactoring](https://refactoring.guru/design-patterns) is another hidden gem worth checking out. /Joel
+This project implements the following patterns:
+- _Command patter_ as the entire structure is modeled as a computer executing commands.
+- _Factory pattern_ when creating content for the computer's memory.
+- _Templete method_ with inheritance, especially of the word class.
+
+## Hey Group 46!
+
+__Group Members__
+- Henrik Vester
+- Viktor Pekkari
+- Gustaf Jonson
+- Joel Bengs
+
+Here are some useful resources on design patterns. To start with, [Fireship's](https://www.youtube.com/watch?v=tv-_1er1mWI) videos are always fire. [Refactoring](https://refactoring.guru/design-patterns) is another hidden gem worth checking out.
+
+## Sequence Diagram - Add
+Below is a sequence diagram for executing the Add instruction.
+
+Class diagram:
+![Sequence diagram add](assets/sequence_diagram_add.png)
+
+This corresponds to the execution of the following code, ineherited from the BinOp class, which Add extends.
+```java
+public void execute(Memory memory, InstructionCounter instructionCounter) {
+        var wordLeft = left.getWord(memory);
+        var wordRight = right.getWord(memory);
+        var wordResult = result.getWord(memory);
+        evaluate(wordLeft, wordRight, wordResult);
+        instructionCounter.increment();
+    }
+```
 
 ## Design questions
 
